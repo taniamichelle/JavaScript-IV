@@ -34,11 +34,14 @@ class Instructor extends Person {
         this.catchPhrase = aboutInstructor.catchPhrase;
     }
     demo(subject) {
-        return `Today we are learning about ${this.subject}`;
+        return `Today we are learning about ${subject}`;
     }
     grade(student, subject) {
-        return `Hello my name is ${this.name} receives a perfect score on ${this.subject}`;
+        return `${student} receives a perfect score on ${subject}`;
     }
+    // randomGrade(){
+    //     return `${student.name}'s grade is now ${randomGrade}.`
+    // }
 };
 
 class Student extends Person {
@@ -47,13 +50,23 @@ class Student extends Person {
         this.previousBackground = aboutStudent.previousBackground;
         this.className = aboutStudent.className;
         this.favSubjects = aboutStudent.favSubjects;
+        this.studentGrade = aboutStudent.studentGrade;
     }
-    listsSubjects(subject) {
+    listsSubjects() {
         return `My favorite subjects are: ${this.favSubjects}`;
     }
     PRAssignment(subject) {
-        return `${this.name} has begun sprint challenge on ${this.subject}`;
+        return `${this.name} has begun sprint challenge on ${subject}`;
     }
+    // graduate(arr, passingGrade, student) {
+    //     let readyToGraduate = arr.filter(pass => {
+    //         if (pass.studentGrade > 70) {
+    //             return `${student} is ready to graduate from Lambda School.`;
+    //         } else {
+    //             return `${student} should keep studying.`;
+    //         }
+    //     }
+    // }
 };
 
 class PM extends Instructor {
@@ -63,23 +76,23 @@ class PM extends Instructor {
         this.favInstructor = aboutPM.favInstructor;
     }
     standUp(channel) {
-        return `${this.name} announces to ${this.channel}, @channel standy times`;
+        return `${this.name} announces to ${channel}, @channel standy times`;
     }
     debugsCode(student, subject) {
-        return `${this.name} debugs ${student.name}'s ${this.subject}`;
+        return `${this.name} debugs ${student}'s ${subject}`;
     }
 };
 
 const bob = new Person({
     name: 'Bob',
     age: 70,
-    location: 'Honolulu',
+    location: 'Idaho',
 });
 
 const tom = new Instructor({
     name: 'Tom',
     age: 57,
-    location: 'Kaneohe',
+    location: 'Philadelphia',
     favLanguage: 'Java',
     specialty: 'Back-end',
     catchPhrase: `Don't forget the homies`
@@ -88,16 +101,17 @@ const tom = new Instructor({
 const millie = new Student({
     name: 'Millie',
     age: 65,
-    location: 'Kona',
+    location: 'Hilo',
     previousBackground: 'Nurse',
     className: 'CS132-end',
-    favSubjects: `HTML, CSS, JS`
+    favSubjects: `HTML, CSS, JS`,
+    studentGrade: 94
 });
 
 const beth = new PM({
     name: 'Beth',
     age: 53,
-    location: 'Hilo',
+    location: 'Waimanalo',
     favLanguage: 'CSS',
     specialty: 'Front-end',
     catchPhrase: `Rollin' with the homies`,
@@ -105,15 +119,15 @@ const beth = new PM({
     favInstructor: 'Josh Knell'
 });
 
-console.log(bob.speak());
-console.log(tom.speak());
-console.log(tom.demo());
-console.log(tom.grade());
-console.log(millie.speak());
-console.log(millie.listsSubjects());
-console.log(millie.PRAssignment());
-console.log(beth.speak());
-console.log(beth.demo());
-console.log(beth.grade());
-console.log(beth.standUp());
-console.log(beth.debugsCode());
+console.log(bob.speak()); //should print "Hello my name is Bob, and I am from Idaho"
+console.log(tom.speak()); //should print "Hello my name is Tom, and I am from Philadelphia"
+console.log(tom.demo('JS4')); //should print "Today we are learning about <subject name>"
+console.log(tom.grade('Millie', 'JS4')); //should print "<student name> receives a perfect score on <subject name>"
+console.log(millie.speak()); //should print "Hello my name is Millie, and I am from Hilo"
+console.log(millie.listsSubjects()); //should print "My favorite subjects are: HTML, CSS, JS"
+console.log(millie.PRAssignment('JS4')); //should print "<student name> has begun sprint challenge on <subject name>"
+console.log(beth.speak()); //should print "Hello my name is Beth, and I am from Waimanalo"
+console.log(beth.demo('JS4')); //should print "Today we are learning about <subject name>"
+console.log(beth.grade('Millie', 'JS4')); //should print "<student name> receives a perfect score on <subject name>"
+console.log(beth.standUp('Web21')); //should print "Beth announces to <slack Channel>, @channel standy times"
+console.log(beth.debugsCode('Millie', 'JS4')); //should print "Beth debugs <student name>'s <subject name>"
