@@ -8,16 +8,16 @@ Prototype Refactor
 
 */
 
-//Parent (Base) constructor function
-function GameObject(about) {
-    this.createdAt = about.createdAt;
-    this.name = about.name;
-    this.dimensions = about.dimensions;
-};
-
-//Prototype Method
-GameObject.prototype.destroy = function () {
-    return `${this.name} was removed from the game.`;
+//Class Parent
+class GameObject {
+    constructor(about) {
+        this.createdAt = about.createdAt;
+        this.name = about.name;
+        this.dimensions = about.dimensions;
+    }
+    destroy() {
+        return `${this.name} was removed from the game.`;
+    }
 };
 
 //Child Class
