@@ -61,7 +61,6 @@ class PM extends Instructor {
         super(aboutPM)
         this.gradClassName = aboutPM.gradClassName;
         this.favInstructor = aboutPM.favInstructor;
-        this.catchPhrase = aboutPM.catchPhrase;
     }
     standUp(channel) {
         return `${this.name} announces to ${this.channel}, @channel standy times`;
@@ -70,3 +69,38 @@ class PM extends Instructor {
         return `${this.name} debugs ${student.name}'s ${this.subject}`;
     }
 };
+
+const bob = new Person({
+    name: 'Bob',
+    age: 70,
+    location: 'Honolulu',
+});
+
+const Tom = new Instructor({
+    name: 'Tom',
+    age: 57,
+    location: 'Kaneohe',
+    favLanguage: 'Java',
+    specialty: 'Back-end',
+    catchPhrase: `Don't forget the homies`
+});
+
+const fred = new Student({
+    name: 'Millie',
+    age: 65,
+    location: 'Kona',
+    previousBackground: 'Nurse',
+    className: 'CS132-end',
+    favSubjects: `HTML, CSS, JS`
+});
+
+const beth = new PM({
+    name: 'Beth',
+    age: 53,
+    location: 'Hilo',
+    favLanguage: 'CSS',
+    specialty: 'Front-end',
+    catchPhrase: `Rollin' with the homies`,
+    gradClassName: 'Web21',
+    favInstructor: 'Josh Knell'
+});
