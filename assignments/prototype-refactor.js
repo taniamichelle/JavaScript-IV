@@ -20,36 +20,28 @@ GameObject.prototype.destroy = function () {
     return `${this.name} was removed from the game.`;
 };
 
-//Child constructor function
-function CharacterStats(stats) {
-    //Gain access to all properties of Parent (Base) constructor fxn
-    GameObject.call(this, stats);
-    this.healthPoints = stats.healthPoints;
+//Child Class
+class CharacterStats extends GameObject {
+    constructor(stats) {
+        super(stats)
+        this.healthPoints = stats.healthPoints;
+    }
+    takeDamage() {
+        return `${this.name} took damage.`;
+    }
 };
 
-//Gain access to Parent prototype methods
-CharacterStats.prototype = Object.create(GameObject.prototype);
-
-//Child Prototype Method
-CharacterStats.prototype.takeDamage = function () {
-    return `${this.name} took damage.`;
-};
-
-//GrandChild constructor function
-function Humanoid(details) {
-    //Gain access to all properties of Parent
-    CharacterStats.call(this, details);
-    this.team = details.team;
-    this.weapons = details.weapons;
-    this.language = details.language;
-};
-
-//Gain access to Parent prototype methods
-Humanoid.prototype = Object.create(CharacterStats.prototype);
-
-//GrandChild Prototype Method
-Humanoid.prototype.greet = function () {
-    return `${this.name} offers a greeting in ${this.language}.`;
+//GrandChild Class
+class Humanoid extends CharacterStats {
+    constructor(details) {
+        super(details)
+        this.team = details.team;
+        this.weapons = details.weapons;
+        this.language = details.language;
+    }
+    greet() {
+        return `${this.name} offers a greeting in ${this.language}.`;
+    }
 };
 
 const mage = new Humanoid({
