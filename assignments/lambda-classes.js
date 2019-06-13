@@ -16,7 +16,7 @@ const fred = new Instructor({
 */
 
 class Person {
-    constructor(aboutPerson) {
+    constructor(about) {
         this.name = about.name;
         this.age = about.age;
         this.location = about.location;
@@ -76,7 +76,7 @@ const bob = new Person({
     location: 'Honolulu',
 });
 
-const Tom = new Instructor({
+const tom = new Instructor({
     name: 'Tom',
     age: 57,
     location: 'Kaneohe',
@@ -85,7 +85,7 @@ const Tom = new Instructor({
     catchPhrase: `Don't forget the homies`
 });
 
-const fred = new Student({
+const millie = new Student({
     name: 'Millie',
     age: 65,
     location: 'Kona',
@@ -104,3 +104,16 @@ const beth = new PM({
     gradClassName: 'Web21',
     favInstructor: 'Josh Knell'
 });
+
+console.log(bob.speak());
+console.log(tom.speak());
+console.log(tom.demo());
+console.log(tom.grade());
+console.log(millie.speak());
+console.log(millie.listsSubjects());
+console.log(millie.PRAssignment());
+console.log(beth.speak());
+console.log(beth.demo());
+console.log(beth.grade());
+console.log(beth.standUp());
+console.log(beth.debugsCode());

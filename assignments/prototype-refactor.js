@@ -183,8 +183,6 @@ const bambamjr = new GrandChild({
     gift: 'rock bat'
 });
 
-console.log(Parent.prototype); --> prints "Fred says Yabba dabba do!"
-"Wilma says Fred!"
 console.log(pebbles.play()); --> prints "Pebbles plays with a rock doll"
 console.log(pebbles.speak()); --> prints "Pebbles says Mama!"
 console.log(bambamjr.speak()); --> prints "Bambam Jr says Bambam!"
